@@ -1,6 +1,6 @@
 import random
 n = 10
-distance = [[[random.randrange(0, 9) for k in xrange(n)] for j in xrange(n)] for i in xrange(n)]
+matrix = [[[random.randrange(0, 9) for k in xrange(n)] for j in xrange(n)] for i in xrange(n)]
 
 
 def matrix_sum(matrix):
@@ -34,6 +34,6 @@ def final(sum_in_matrix, sum_z, native_matrix):
                     max_i = i
     print'Coordiantes:(%s,%s,%s) Value:%s' % (max_j, max_i, max_z, max_num)
 
-sum_z, sum_in_matrix = matrix_sum(distance)
+sum_z, sum_in_matrix = matrix_sum(matrix)
 
-final(sum_in_matrix, sum_z, distance)
+final(sum_in_matrix, sum_z, matrix)
