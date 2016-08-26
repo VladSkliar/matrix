@@ -32,7 +32,7 @@ def final(sum_in_matrix, sum_z, native_matrix):
                     max_z = z
                     max_j = j
                     max_i = i
-    print(max_i, max_z, max_j, max_num)
+    print'Coordiantes:(%s,%s,%s) Value:%s' % (max_j, max_i, max_z, max_num)
 
 sum_z, sum_in_matrix = matrix_sum(distance)
 
