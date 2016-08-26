@@ -1,28 +1,21 @@
 import random
-n = 3
+n = 10
 distance = [[[random.randrange(0, 9) for k in xrange(n)] for j in xrange(n)] for i in xrange(n)]
 
 
-def matrix_z_sum(matrix):
-    sum_matrix = [[0 for k in xrange(n)] for j in xrange(n)]
+def matrix_sum(matrix):
+    sum_z = [[0 for k in xrange(n)] for j in xrange(n)]
+    sum_in_matrix = [[[0 for k in xrange(n)] for j in xrange(n)] for i in xrange(n)]
     for i in range(0, len(matrix)):
         for z in range(0, len(matrix[i])):
             for j in range(0, len(matrix[i][z])):
-                sum_matrix[z][j] += matrix[i][z][j]
-    return sum_matrix
-
-
-def sum_in_matrix(matrix):
-    sum_matrix = [[[0 for k in xrange(n)] for j in xrange(n)] for i in xrange(n)]
-    for i in range(0, len(matrix)):
-        for z in range(0, len(matrix[i])):
-            for j in range(0, len(matrix[i][z])):
+                sum_z[z][j] += matrix[i][z][j]
                 x = sum(matrix[i][z])
                 for v in range(0, len(matrix[i])):
                     x += matrix[i][v][j]
                 x -= matrix[i][z][j]
-                sum_matrix[i][z][j] += x
-    return sum_matrix
+                sum_in_matrix[i][z][j] += x
+    return sum_z, sum_in_matrix
 
 
 def final(sum_in_matrix, sum_z, native_matrix):
@@ -41,7 +34,6 @@ def final(sum_in_matrix, sum_z, native_matrix):
                     max_i = i
     print(max_i, max_z, max_j, max_num)
 
-sum_z = matrix_z_sum(distance)
-sum_in_matrix = sum_in_matrix(distance)
+sum_z, sum_in_matrix = matrix_sum(distance)
 
 final(sum_in_matrix, sum_z, distance)
